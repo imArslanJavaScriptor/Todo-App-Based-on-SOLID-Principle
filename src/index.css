@@ -1,1 +1,17 @@
 @import "tailwindcss";
+
+
+@layer base {
+  body {
+    @apply bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors duration-300;
+  }
+}
+
+@layer components {
+  .todo-item {
+    @apply flex items-center justify-between p-4 bg-white dark:bg-gray-800 rounded-lg shadow-sm hover:shadow-md transition-all duration-200;
+  }
+  .todo-checkbox {
+    @apply w-5 h-5 text-blue-600 rounded focus:ring-blue-500;
+  }
+}
