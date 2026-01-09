@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import TodoInput from './components/TodoInput';
 import TodoList from './components/TodoList';
 import TodoFilters from './components/TodoFilters';
@@ -7,12 +7,16 @@ import ThemeToggle from './components/ThemeToggle';
 import { todoService } from './services/TodoService';
 
 function App() {
-  const [todos, setTodos] = useState([]);
+  // const [todos, setTodos] = useState([]);
+  const [todos, setTodos] = useState(() => {
+    // Initialize state lazily — this runs ONLY once on first render
+    return todoService.getTodos();
+  });
   const [filter, setFilter] = useState('all');
 
-  useEffect(() => {
-    setTodos(todoService.getTodos());
-  }, []);
+  // useEffect(() => {
+  //   setTodos(todoService.getTodos());
+  // }, []);
 
   const refreshTodos = () => setTodos(todoService.getTodos());
 
